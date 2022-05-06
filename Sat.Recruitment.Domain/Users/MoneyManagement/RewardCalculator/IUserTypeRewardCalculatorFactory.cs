@@ -20,6 +20,10 @@ namespace Sat.Recruitment.Domain.Users.MoneyManagement.RewardCalculator
 
         public IUserTypeRewardCalculator GetUserTypeRewardCalculator(UserType type)
         {
+            if (!UserTypeRewardCalculators.ContainsKey(type.Id))
+            {
+                throw new Exception("ProfileType not initiated");
+            }
             return UserTypeRewardCalculators[type.Id];
         }
     }
