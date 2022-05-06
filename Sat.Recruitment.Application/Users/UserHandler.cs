@@ -51,5 +51,11 @@ namespace Sat.Recruitment.Application.Users
                 throw new DuplicateObjectException(user.GetType().Name, user.ToString());
             }
         }
+
+        private void ValidateCommand(CreateUserCommand request)
+        {
+            CreateUserCommandValidator validator = new CreateUserCommandValidator();
+            validator.Validate(request);
+        }
     }
 }

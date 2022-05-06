@@ -36,7 +36,7 @@ namespace Sat.Recruitment.Api.Controllers
                 CreateUserCommand command = new CreateUserCommand
                 {
                     Name = request.Name,
-                    Email = request.Email.NormalizeEmail(),
+                    Email = request.Email?.NormalizeEmail(),
                     Address = request.Address,
                     Phone = request.Phone,
                     UserType = request.UserType,

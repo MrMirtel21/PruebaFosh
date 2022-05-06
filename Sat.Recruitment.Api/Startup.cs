@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Sat.Recruitment.Application.PipelineBehaviors;
 
 namespace Sat.Recruitment.Api
 {
@@ -33,7 +34,9 @@ namespace Sat.Recruitment.Api
                     .AddServices()
                     .AddControllers();
             services.AddMediatR(typeof(CreateUserCommand).GetTypeInfo().Assembly);
-            services.AddFluentValidation();
+            services.AddFluentValidation(fv=>fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>(
+                lifetime: ServiceLifetime.Singleton));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddSwaggerGen();
         }

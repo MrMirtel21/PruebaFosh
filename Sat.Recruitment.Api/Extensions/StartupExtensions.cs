@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using Sat.Recruitment.Application.Users.Commands;
 using Sat.Recruitment.Domain.Users;
 using Sat.Recruitment.Domain.Users.MoneyManagement.RewardCalculator;
 using Sat.Recruitment.Infrastructure;
@@ -17,6 +19,7 @@ namespace Sat.Recruitment.Api.Extensions
         {
             return services.AddTransient<IUserRepository, UserRepository>()
                            .AddTransient<IUserMoneyManager, UserMoneyManager>()
+                           .AddTransient<IValidator<CreateUserCommand>, CreateUserCommandValidator>()
                            .AddTransient<IUserTypeRewardCalculatorFactory, UserTypeRewardCalculatorFactory>();
         }
     }
