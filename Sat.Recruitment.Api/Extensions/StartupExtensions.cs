@@ -19,7 +19,6 @@ namespace Sat.Recruitment.Api.Extensions
         {
             return services.AddTransient<IUserRepository, UserRepository>()
                            .AddTransient<IUserMoneyManager, UserMoneyManager>()
-                           .AddTransient<IValidator<CreateUserCommand>, CreateUserCommandValidator>()
                            .AddTransient<IUserTypeRewardCalculatorFactory, UserTypeRewardCalculatorFactory>();
         }
     }

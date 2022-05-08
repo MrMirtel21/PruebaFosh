@@ -22,7 +22,7 @@ namespace Sat.Recruitment.Domain.Users.MoneyManagement.RewardCalculator
         {
             if (!UserTypeRewardCalculators.ContainsKey(type.Id))
             {
-                throw new Exception("ProfileType not initiated");
+                throw new NotImplementedException("ProfileType not implemented");
             }
             return UserTypeRewardCalculators[type.Id];
         }
